@@ -1,9 +1,10 @@
 {
   "name": "native-is-elevated",
   "version": "0.1.0",
-  "description": "Native Node module for checking if the process is being run with elevated privileges",
+  "description": "Native module for checking if the process is being run with elevated privileges",
   "main": "index.js",
   "scripts": {
+    "configure": "node-gyp configure",
     "build": "node-gyp build",
     "test": "ava"
   },

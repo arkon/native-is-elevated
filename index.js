@@ -1,27 +1,27 @@
 'use strict';
-var isElevatedModule = null;
+var isElevated = null;
 var tried = false;
 
 module.exports = function() {
   if (!tried) {
     tried = true;
     try {
-      isElevatedModule = require('./build/Release/is-elevated');
+      isElevated = require('./build/Release/is-elevated');
     } catch (err) {
       console.error(err);
     }
   }
 
-  if (!isElevatedModule) {
+  if (!isElevated) {
     return false;
   }
 
-  var r = false;
+  var retValue = false;
   try {
-    r = isElevatedModule.isElevated();
+    retValue = isElevated.isElevated();
   } catch (err) {
     console.error(err);
   }
 
-  return r;
+  return retValue;
 };

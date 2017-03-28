@@ -41,9 +41,9 @@ namespace is_elevated {
     args.GetReturnValue().Set(resultBool);
   }
 
-  void init(Local<Object> exports) {
+  void Init(Local<Object> exports) {
     NODE_SET_METHOD(exports, "isElevated", IsElevated);
   }
 
-  NODE_MODULE(is_elevated, init)
+  NODE_MODULE(is_elevated, Init)
 }
