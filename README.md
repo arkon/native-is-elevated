@@ -16,6 +16,6 @@ $ npm install --save native-is-elevated
 
 ## Usage
 
-```
+```js
 const isElevated = require('native-is-elevated')();  // boolean value
 ```
