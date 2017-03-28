@@ -1,5 +1,8 @@
 #include <node.h>
+
+#ifdef linux
 #include <unistd.h>
+#endif
 
 #ifdef _WIN32
 #include <windows.h>
