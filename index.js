@@ -1,24 +1,32 @@
 'use strict';
-var isElevated = null;
+var lib = null;
 var tried = false;
+var returned = false;
+var retValue = false;
 
 module.exports = function() {
+  if (returned) {
+    return retValue;
+  }
+
   if (!tried) {
+    // Prevent multiple failed require attempts
     tried = true;
     try {
-      isElevated = require('./build/Release/is-elevated');
+      lib = require('./build/Release/is-elevated');
     } catch (err) {
       console.error(err);
     }
   }
 
-  if (!isElevated) {
+  if (!lib) {
     return false;
   }
 
-  var retValue = false;
   try {
-    retValue = isElevated.isElevated();
+    // Cache the result for subsequent calls
+    retValue = lib.isElevated();
+    returned = true;
   } catch (err) {
     console.error(err);
   }
