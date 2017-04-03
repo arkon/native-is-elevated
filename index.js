@@ -25,8 +25,8 @@ module.exports = function() {
 
   try {
     // Cache the result for subsequent calls
-    retValue = lib.isElevated();
     returned = true;
+    retValue = lib.isElevated();
   } catch (err) {
     console.error(err);
   }

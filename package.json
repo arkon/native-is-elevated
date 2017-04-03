@@ -3,6 +3,9 @@
   "version": "0.2.0",
   "description": "Native module for checking if the process is being run with elevated privileges",
   "main": "index.js",
+  "engine": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
     "configure": "node-gyp configure",
     "build": "node-gyp build",
