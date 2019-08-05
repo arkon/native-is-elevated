@@ -1,5 +1,5 @@
 var test = require('ava').serial;
-var isElevated = require('.');
+var isElevated = require('..');
 
 // Note that 1 of the 2 tests will fail depending on if you're running
 // it normally, or with root/admin rights

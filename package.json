@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/arkon/native-is-elevated#readme",
   "devDependencies": {
-    "ava": "^0.18.2"
+    "ava": "^2.2.0"
   }
 }
