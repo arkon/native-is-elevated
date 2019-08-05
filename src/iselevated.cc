@@ -37,18 +37,18 @@ namespace
     #endif
 
     napi_value napi_result;
-		napi_get_boolean(env, bIsElevated, &napi_result);
+    napi_get_boolean(env, bIsElevated, &napi_result);
 
-		return napi_result;
+    return napi_result;
   }
 
   napi_value Init(napi_env env, napi_value exports) {
-		napi_value isElevated;
-		napi_create_function(env, "isElevated", NAPI_AUTO_LENGTH, IsElevated, NULL, &isElevated);
-		napi_set_named_property(env, exports, "isElevated", isElevated);
+    napi_value isElevated;
+    napi_create_function(env, "isElevated", NAPI_AUTO_LENGTH, IsElevated, NULL, &isElevated);
+    napi_set_named_property(env, exports, "isElevated", isElevated);
 
-		return exports;
-	}
+    return exports;
+  }
 
-	NAPI_MODULE(NODE_GYP_MODULE_NAME, Init);
+  NAPI_MODULE(NODE_GYP_MODULE_NAME, Init);
 }

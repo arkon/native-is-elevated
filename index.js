@@ -1,4 +1,5 @@
 'use strict';
+
 var lib = null;
 var tried = false;
 var returned = false;
