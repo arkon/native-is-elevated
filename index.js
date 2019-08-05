@@ -4,7 +4,7 @@ var tried = false;
 var returned = false;
 var retValue = false;
 
-module.exports = function() {
+module.exports = function () {
   if (returned) {
     return retValue;
   }
@@ -13,7 +13,7 @@ module.exports = function() {
     // Prevent multiple failed require attempts
     tried = true;
     try {
-      lib = require('./build/Release/is-elevated');
+      lib = require('./build/Release/iselevated');
     } catch (err) {
       console.error(err);
     }

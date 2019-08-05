@@ -1,4 +1,4 @@
-#include <node.h>
+#include <node_api.h>
 
 #if defined(_WIN32) || defined(WIN32)
 #include <windows.h>  // Windows
@@ -6,18 +6,10 @@
 #include <unistd.h>   // Unix (macOS, Linux)
 #endif
 
-namespace is_elevated
+namespace
 {
-  using v8::Boolean;
-  using v8::FunctionCallbackInfo;
-  using v8::Isolate;
-  using v8::Local;
-  using v8::Object;
-  using v8::Value;
-
-  void IsElevated(const FunctionCallbackInfo<Value>& args)
+  napi_value IsElevated(napi_env env, napi_callback_info info)
   {
-    Isolate *isolate = args.GetIsolate();
     bool bIsElevated = false;
 
     #if defined(_WIN32) || defined(WIN32)
@@ -44,14 +36,19 @@ namespace is_elevated
     bIsElevated = geteuid() == 0;
     #endif
 
-    Local<Boolean> resultBool = Boolean::New(isolate, bIsElevated);
-    args.GetReturnValue().Set(resultBool);
+    napi_value napi_result;
+		napi_get_boolean(env, bIsElevated, &napi_result);
+
+		return napi_result;
   }
 
-  void Init(Local<Object> exports)
-  {
-    NODE_SET_METHOD(exports, "isElevated", IsElevated);
-  }
+  napi_value Init(napi_env env, napi_value exports) {
+		napi_value isElevated;
+		napi_create_function(env, "isElevated", NAPI_AUTO_LENGTH, IsElevated, NULL, &isElevated);
+		napi_set_named_property(env, exports, "isElevated", isElevated);
 
-  NODE_MODULE(is_elevated, Init)
+		return exports;
+	}
+
+	NAPI_MODULE(NODE_GYP_MODULE_NAME, Init);
 }

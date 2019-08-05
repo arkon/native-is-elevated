@@ -1,9 +1,9 @@
 {
   "targets": [
     {
-      "target_name": "is-elevated",
+      "target_name": "iselevated",
       "sources": [
-        "src/is-elevated.cc"
+        "src/iselevated.cc"
       ]
     }
   ]
