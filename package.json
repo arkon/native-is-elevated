@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "description": "Native module for checking if the process is being run with elevated privileges",
   "main": "index.js",
+  "types": "index.d.ts",
   "engine": {
     "node": ">=4.0.0"
   },
