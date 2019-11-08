@@ -1,9 +1,9 @@
 'use strict';
 
-var lib = null;
-var tried = false;
-var returned = false;
-var retValue = false;
+let lib = null;
+let tried = false;
+let returned = false;
+let retValue = false;
 
 module.exports = function isElevated () {
   if (returned) {
