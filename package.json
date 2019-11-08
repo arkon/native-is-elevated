@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "engine": {
-    "node": ">=4.0.0"
+    "node": ">=8.0.0"
   },
   "scripts": {
     "configure": "node-gyp configure",
@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/arkon/native-is-elevated#readme",
   "devDependencies": {
-    "ava": "^2.2.0"
+    "ava": "^2.4.0"
   }
 }
