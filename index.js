@@ -5,7 +5,7 @@ var tried = false;
 var returned = false;
 var retValue = false;
 
-module.exports = function () {
+module.exports = function isElevated () {
   if (returned) {
     return retValue;
   }
