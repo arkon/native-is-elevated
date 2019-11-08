@@ -1,1 +1,3 @@
-export function isElevated(): boolean;
+declare function isElevated(): boolean;
+
+export = isElevated;
