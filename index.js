@@ -5,7 +5,15 @@ let tried = false;
 let returned = false;
 let retValue = false;
 
-module.exports = function isElevated () {
+module.exports = function isElevated() {
+  if (process.platform === 'win32') {
+    return isElevatedWindows();
+  }
+
+  return process.getuid() === 0;
+};
+
+function isElevatedWindows() {
   if (returned) {
     return retValue;
   }
@@ -33,4 +41,4 @@ module.exports = function isElevated () {
   }
 
   return retValue;
-};
+}
