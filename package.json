@@ -10,7 +10,8 @@
   "scripts": {
     "configure": "node-gyp configure",
     "build": "node-gyp build",
-    "test": "ava"
+    "test:elevated": "ava --match='elevated'",
+    "test:normal": "ava --match='normal'"
   },
   "repository": {
     "type": "git",
