@@ -9,9 +9,7 @@
   },
   "scripts": {
     "configure": "node-gyp configure",
-    "build": "node-gyp build",
-    "test:elevated": "ava --match='elevated'",
-    "test:normal": "ava --match='normal'"
+    "build": "node-gyp build"
   },
   "repository": {
     "type": "git",
@@ -22,8 +20,5 @@
   "bugs": {
     "url": "https://github.com/arkon/native-is-elevated/issues"
   },
-  "homepage": "https://github.com/arkon/native-is-elevated#readme",
-  "devDependencies": {
-    "ava": "^4.1.0"
-  }
+  "homepage": "https://github.com/arkon/native-is-elevated#readme"
 }

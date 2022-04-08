@@ -11,13 +11,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        # os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-latest, macOS-latest]
         node-version: [16]
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+
       - run: npm install
-      - run: npm run test:normal
-      # - run: sudo npm run test:elevated
+
+      - name: Run tests
+        run: node tst/normal.js && sudo node tst/elevated.js
