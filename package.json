@@ -1,6 +1,6 @@
 {
   "name": "native-is-elevated",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Native module for checking if the process is being run with elevated privileges",
   "main": "index.js",
   "types": "index.d.ts",
