@@ -1,9 +1,12 @@
 #include <node_api.h>
 
 #if defined(_WIN32) || defined(WIN32)
-#include <windows.h>  // Windows
+// Windows
+#include <windows.h>
+#include <shlobj.h>
 #else
-#include <unistd.h>   // Unix (macOS, Linux)
+// Unix (macOS, Linux)
+#include <unistd.h>
 #endif
 
 namespace
@@ -13,25 +16,25 @@ namespace
     bool bIsElevated = false;
 
     #if defined(_WIN32) || defined(WIN32)
-    // Based on http://stackoverflow.com/a/8196291
-    HANDLE hToken = NULL;
-    if (OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &hToken))
+    // Based on https://stackoverflow.com/questions/4230602
+    BOOL isMember = false;
+    PSID administratorsGroup = nullptr;
+    SID_IDENTIFIER_AUTHORITY SIDAuthNT = SECURITY_NT_AUTHORITY;
+
+    if (AllocateAndInitializeSid(
+      &SIDAuthNT, 2, SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_ADMINS,
+      0, 0, 0, 0, 0, 0, &administratorsGroup
+    ))
     {
-      TOKEN_ELEVATION Elevation;
-      DWORD cbSize = sizeof(TOKEN_ELEVATION);
-      if (GetTokenInformation(hToken,
-                              TokenElevation,
-                              &Elevation,
-                              sizeof(Elevation),
-                              &cbSize))
-      {
-        bIsElevated = Elevation.TokenIsElevated;
-      }
+      CheckTokenMembership(nullptr, administratorsGroup, &isMember);
     }
-    if (hToken)
+
+    if (administratorsGroup)
     {
-      CloseHandle(hToken);
+      FreeSid(administratorsGroup);
     }
+
+    bIsElevated = isMember;
     #else
     bIsElevated = geteuid() == 0;
     #endif
@@ -42,7 +45,8 @@ namespace
     return napi_result;
   }
 
-  napi_value Init(napi_env env, napi_value exports) {
+  napi_value Init(napi_env env, napi_value exports)
+  {
     napi_value isElevated;
     napi_create_function(env, "isElevated", NAPI_AUTO_LENGTH, IsElevated, NULL, &isElevated);
     napi_set_named_property(env, exports, "isElevated", isElevated);
