@@ -4,7 +4,7 @@
 
 Checks if the process is running with elevated privileges (i.e., as root on Unix systems or Administrator on Windows).
 
-Basically just a [native version](https://nodejs.org/api/addons.html) of [is-elevated](https://github.com/sindresorhus/is-elevated).
+Basically just a [native version](https://nodejs.org/api/addons.html) of [is-elevated](https://github.com/sindresorhus/is-elevated) that doesn't spawn a new process on Windows.
 
 
 ## Install
