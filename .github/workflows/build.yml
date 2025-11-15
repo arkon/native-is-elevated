@@ -25,6 +25,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: macOS + Node.js 16 dependencies fix
+        if: matrix.os == 'macos-latest' && matrix.node-version == 16
+        run: brew install python-setuptools
+
       - run: npm install
 
       - name: Run tests on UNIX platforms
