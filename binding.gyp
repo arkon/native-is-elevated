@@ -27,6 +27,7 @@
         },
         "VCLinkerTool": {
           "AdditionalOptions": [
+            "/DYNAMICBASE",
             "/guard:cf"
           ]
         }
