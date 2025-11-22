@@ -1,6 +1,6 @@
 # native-is-elevated
 
-[![NPM](https://nodei.co/npm/native-is-elevated.png?compact=true)](https://nodei.co/npm/native-is-elevated)
+[![NPM](https://nodei.co/npm/native-is-elevated.png?compact=true)](https://www.npmjs.com/package/native-is-elevated)
 
 Checks if the process is running with elevated privileges (i.e., as root on Unix systems or Administrator on Windows).
 
@@ -9,8 +9,8 @@ Basically just a [native version](https://nodejs.org/api/addons.html) of [is-ele
 
 ## Install
 
-```
-$ npm install --save native-is-elevated
+```sh
+npm install --save native-is-elevated
 ```
 
 
