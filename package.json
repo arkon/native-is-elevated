@@ -2,7 +2,7 @@
   "name": "native-is-elevated",
   "version": "0.7.0",
   "description": "Native module for checking if the process is being run with elevated privileges",
-  "author": "Eugene Cheung",
+  "author": "arkon",
   "license": "MIT",
   "repository": {
     "type": "git",
