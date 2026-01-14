@@ -1,6 +1,6 @@
 {
   "name": "native-is-elevated",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Native module for checking if the process is being run with elevated privileges",
   "author": "arkon",
   "license": "MIT",
