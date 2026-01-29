@@ -16,18 +16,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
-        node-version: [16, 18, 20, 22, 24]
+        os: [ubuntu-slim, macOS-latest, windows-latest]
+        node-version: [16, 18, 20, 22, 24, 25]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: macOS + Node.js 16 dependencies fix
         if: matrix.os == 'macos-latest' && matrix.node-version == 16
         run: brew install python-setuptools
+
+      - name: Windows + Node.js 16 dependencies fix
+        if: matrix.os == 'windows-latest' && matrix.node-version == 16
+        run: pip install setuptools
 
       - run: npm install
 
